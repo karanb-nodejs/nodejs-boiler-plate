@@ -1,0 +1,31 @@
+create table test.employee_documents (
+    id bigint auto_increment primary key,
+    employee_name bigint not null,
+    document_name varchar(128) not null,
+    document_type enum('image','pdf','doc') default 'image',
+    status enum('active','inactive','deleted') default 'active',
+    created_at timestamp default current_timestamp,
+    updated_at timestamp default current_timestamp on update current_timestamp
+);
+
+create table test.department (
+    id bigint auto_increment primary key,
+    department_name varchar(128) not null,
+    status enum('active','inactive','deleted') default 'active',
+    created_at timestamp default current_timestamp,
+    updated_at timestamp default current_timestamp on update current_timestamp
+);
+
+create table test.employee (
+    id bigint auto_increment primary key,
+    department_id bigint not null,
+    employee_number varchar(128) not null,
+    employee_name varchar(128) not null,
+    email varchar(128) unique not null,
+    mobile varchar(15) unique not null,
+    salary double(10,2) not null,
+    dob date null,
+    status enum('active','inactive','deleted') default 'active',
+    created_at timestamp default current_timestamp,
+    updated_at timestamp default current_timestamp on update current_timestamp
+);
