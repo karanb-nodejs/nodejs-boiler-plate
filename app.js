@@ -1,8 +1,8 @@
-const app = require("./src/routes/index")
 const dotenv = require("dotenv");
 dotenv.config({
     quiet: true,
 });
+const app = require("./src/routes/index")
 
 const { PORT } = require("./src/config/constants");
 

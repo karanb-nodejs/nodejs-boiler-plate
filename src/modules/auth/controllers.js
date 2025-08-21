@@ -9,6 +9,20 @@ const login = async (req, res, next) => {
     }
 };
 
+const uploadDocuments = async (req, res) => {
+    try {
+        const fileInfo = await service.uploadDocumentsService(req.files);
+        res.status(200).json({
+            success: true,
+            message: "Files uploaded successfully",
+            files: fileInfo
+        });
+    } catch (err) {
+        res.status(500).json({ success: false, message: err.message });
+    }
+};
+
 module.exports = {
-    login
+    login,
+    uploadDocuments
 };
